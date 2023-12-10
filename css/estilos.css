@@ -1,0 +1,68 @@
+
+.navbar {
+  justify-content: center;
+  align-items: center;
+
+}
+.titulo{
+  font-family: 'Petit Formal Script', cursive;
+}
+
+.fondo {
+  background: url('../img/fondo1.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.images {
+  transition: transform 0.5s ease;
+}
+
+.images:hover {
+  transform: scale(1.1);
+}
+
+
+.colortexto{
+  color: #fff;
+}
+
+
+
+.navbar-light .navbar-nav .nav-link {
+  color: white !important;
+}
+
+.titulo{
+  text-align: center;
+}
+
+
+.images{
+  width: 300px;
+  height: auto;
+}
+
+.contenedor {
+  display: flex;
+  justify-content: space-between;
+}
+
+.caja {
+  text-align: center;
+  max-width: 400px;
+  margin: 20px;
+}
+
+.caja p{
+  text-align: justify;
+}
+
+
+
+.images {
+  width:400px;
+  height: auto;
+  padding-left: 4px;
+  padding-right: 4px;
+  border-radius: 20px;
+}

@@ -1,0 +1,45 @@
+.fondo {
+  background: url('../img/image1.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.images{
+  width: 300px;
+  height: auto;
+}
+
+.titulo1{
+  font-family: 'Petit Formal Script', cursive;
+}
+
+
+.contenedor {
+  display: flex;
+  justify-content:space-around;
+}
+
+.caja {
+  text-align: center;
+  max-width: 400px;
+  margin: 10px;
+}
+
+.caja p{
+  text-align: justify;
+}
+
+.images {
+  width:100px;
+  height: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.fondo-iconos{
+   background-color: #323232
+}
+
+
+.bg-custom {
+    background-color: #FF9209 !important;
+}
