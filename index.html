@@ -109,12 +109,12 @@
   const database = getDatabase(app);
 
   window.crearRegistro = function () {
-      const nombres = document.getElementById("nombre").value;
-      const apellidos = document.getElementById("apellido").value;
+      const nombre = document.getElementById("nombre").value;
+      const apellido = document.getElementById("apellido").value;
       const email = document.getElementById("email").value;
       const direccion = document.getElementById("direccion").value;
       const celular = document.getElementById("celular").value;
-      console.log(nombres, apellidos, email, direccion, celular);
+      console.log(nombre, apellido, email, direccion, celular);
       
       push(
           ref(database, 'Roberth_Torres'),
