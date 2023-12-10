@@ -36,12 +36,12 @@
       </div>
      <form class="col-md-6  p-4">
       <div class="form-group">
-        <label for="inputAddress2" class="text-white font-weight-bold">Nombres</label>
-        <input type="text" class="form-control col-sm-8" id="nombres" placeholder="Ingrese sus nombres completos">
+        <label for="inputAddress2" class="text-white font-weight-bold">Nombre</label>
+        <input type="text" class="form-control col-sm-8" id="nombre" placeholder="Ingrese sus nombres completos">
       </div>
       <div class="form-group">
-        <label for="inputAddress2" class="text-white font-weight-bold">Apellidos</label>
-        <input type="text" class="form-control col-sm-8" id="apellidos" placeholder="Ingrese sus nombres completos">
+        <label for="inputAddress2" class="text-white font-weight-bold">Apellido</label>
+        <input type="text" class="form-control col-sm-8" id="apellido" placeholder="Ingrese sus nombres completos">
       </div>
        <div class="form-group">
          <label for="inputEmail4" class="text-white font-weight-bold">Correo electrónico</label>
@@ -109,8 +109,8 @@
   const database = getDatabase(app);
 
   window.crearRegistro = function () {
-      const nombres = document.getElementById("nombres").value;
-      const apellidos = document.getElementById("apellidos").value;
+      const nombres = document.getElementById("nombre").value;
+      const apellidos = document.getElementById("apellido").value;
       const email = document.getElementById("email").value;
       const direccion = document.getElementById("direccion").value;
       const celular = document.getElementById("celular").value;
@@ -119,8 +119,8 @@
       push(
           ref(database, 'Roberth_Torres'),
           {
-              nombre: nombres,
-              apellidos: apellidos,
+              nombre: nombre,
+              apellido: apellido,
               email: email,
               direccion: direccion,
               celular: celular
