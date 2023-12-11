@@ -196,72 +196,73 @@
 //-------------------------------------FIN-------------------------------------------------
 //-------------------------------------EDITAR REGISTRO-----------------------------------------------------------
 
-// Función para limpiar el formulario
-function limpiarFormulario() {
-  document.getElementById("nombre").value = "";
-  document.getElementById("apellido").value = "";
-  document.getElementById("email").value = "";
-  document.getElementById("direccion").value = "";
-  document.getElementById("celular").value = "";
-}
+ // Función para cargar datos al formulario al editar
+ window.editarRegistro = function(key) {
+    const registroRef = ref(database, `Roberth_Torres/${key}`);
 
-window.editarRegistro = function(key) {
-  const registroRef = ref(database, `Roberth_Torres/${key}`);
+    // Obtener los datos del registro seleccionado
+    onValue(registroRef, (snapshot) => {
+      const registro = snapshot.val();
 
-  // Obtener los datos del registro seleccionado
-  onValue(registroRef, (snapshot) => {
-    const registro = snapshot.val();
+      // Llenar el formulario con los datos del registro
+      document.getElementById("nombre").value = registro.nombre;
+      document.getElementById("apellido").value = registro.apellido;
+      document.getElementById("email").value = registro.email;
+      document.getElementById("direccion").value = registro.direccion;
+      document.getElementById("celular").value = registro.celular;
 
-    // Llenar el formulario con los datos del registro
-    document.getElementById("nombre").value = registro.nombre;
-    document.getElementById("apellido").value = registro.apellido;
-    document.getElementById("email").value = registro.email;
-    document.getElementById("direccion").value = registro.direccion;
-    document.getElementById("celular").value = registro.celular;
+      // Cambiar el texto del botón a "Actualizar"
+      document.getElementById("editarButton").innerText = "Actualizar";
 
-    // Cambiar el texto del botón a "Actualizar"
-    document.getElementById("editarButton").innerText = "Actualizar";
+      // Agregar la clave del registro al botón de editar para indicar que es una edición
+      document.getElementById("editarButton").setAttribute("onclick", `guardarRegistro('${key}')`);
+    });
+  };
 
-    // Agregar la clave del registro al botón de editar para indicar que es una edición
-    document.getElementById("editarButton").setAttribute("onclick", `guardarRegistro('${key}')`);
-  });
-};
+  // Función para guardar (actualizar) un registro
+  window.guardarRegistro = function(key) {
+    const nombre = document.getElementById("nombre").value;
+    const apellido = document.getElementById("apellido").value;
+    const email = document.getElementById("email").value;
+    const direccion = document.getElementById("direccion").value;
+    const celular = document.getElementById("celular").value;
 
-// Función para limpiar el formulario
-function limpiarFormulario() {
-  document.getElementById("nombre").value = "";
-  document.getElementById("apellido").value = "";
-  document.getElementById("email").value = "";
-  document.getElementById("direccion").value = "";
-  document.getElementById("celular").value = "";
-}
+    // Verificar si es una edición o un nuevo registro
+    if (key) {
+      // Actualizar el registro en la base de datos
+      const registroRef = ref(database, `Roberth_Torres/${key}`);
+      set(registroRef, {
+        nombre: nombre,
+        apellido: apellido,
+        email: email,
+        direccion: direccion,
+        celular: celular
+      });
 
-// Función para guardar (actualizar) un registro
-window.guardarRegistro = function(key) {
-  const nombre = document.getElementById("nombre").value;
-  const apellido = document.getElementById("apellido").value;
-  const email = document.getElementById("email").value;
-  const direccion = document.getElementById("direccion").value;
-  const celular = document.getElementById("celular").value;
+      // Restaurar el botón de "Enviar" después de actualizar
+      document.getElementById("guardarButton").style.display = "block";
+    } else {
+      // Agregar un nuevo registro a la base de datos
+      push(ref(database, 'Roberth_Torres'), {
+        nombre: nombre,
+        apellido: apellido,
+        email: email,
+        direccion: direccion,
+        celular: celular
+      });
+    }
 
-  // Actualizar el registro en la base de datos
-  const registroRef = ref(database, `Roberth_Torres/${key}`);
-  set(registroRef, {
-    nombre: nombre,
-    apellido: apellido,
-    email: email,
-    direccion: direccion,
-    celular: celular
-  });
+    // Limpiar el formulario después de actualizar o agregar
+    document.getElementById("nombre").value = "";
+    document.getElementById("apellido").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("direccion").value = "";
+    document.getElementById("celular").value = "";
 
-  // Limpiar el formulario después de actualizar
-  limpiarFormulario();
-
-  // Restaurar el botón de "Enviar"
-  document.getElementById("guardarButton").style.display = "block";
-  // Ocultar el botón de "Actualizar"
-  document.getElementById("editarButton").style.display = "none";
-};
+    // Ocultar el botón de "Actualizar"
+    document.getElementById("editarButton").style.display = "none";
+  };
+</script>
 
 //------------------------------------------------FIN--------------------------------------------
 </script>
