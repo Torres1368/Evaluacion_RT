@@ -137,6 +137,30 @@
   const analytics = getAnalytics(app);
 
 
+  //--------------------------------CREAR REGISTRO------------------------------------
+  window.crearRegistro = function () {
+      const nombre = document.getElementById("nombre").value;
+      const apellido = document.getElementById("apellido").value;
+      const email = document.getElementById("email").value;
+      const direccion = document.getElementById("direccion").value;
+      const celular = document.getElementById("celular").value;
+      console.log(nombre, apellido, email, direccion, celular);
+      
+      push(
+          ref(database, 'Roberth_Torres'),
+          {
+              nombre: nombre,
+              apellido: apellido,
+              email: email,
+              direccion: direccion,
+              celular: celular
+               
+          }
+      );
+
+  }
+
+//-----------------------------------FIN------------------------------------
 
 
 
@@ -169,27 +193,8 @@ onValue(databaseRef, (snapshot) => {
 
 
 
-  window.crearRegistro = function () {
-      const nombre = document.getElementById("nombre").value;
-      const apellido = document.getElementById("apellido").value;
-      const email = document.getElementById("email").value;
-      const direccion = document.getElementById("direccion").value;
-      const celular = document.getElementById("celular").value;
-      console.log(nombre, apellido, email, direccion, celular);
-      
-      push(
-          ref(database, 'Roberth_Torres'),
-          {
-              nombre: nombre,
-              apellido: apellido,
-              email: email,
-              direccion: direccion,
-              celular: celular
-               
-          }
-      );
 
-  }
+
 </script>
 
 
