@@ -77,16 +77,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>
-        <a href="#" class="btn btn-warning editar" data-key="${key}">Editar</a>
-        <a href="#" onclick="eliminarRegistro()" class="btn btn-danger eliminar" data-key="${key}">Eliminar</a>
-        
-      </td>
-    </tr>
+
   </tbody>
 </table>
 
@@ -179,9 +170,9 @@
       <td>${apellido}</td>
       <td>${email}</td>
       <td>
-        <a href="#" class="btn btn-warning editar" onclick="editarRegistro('${key}')">Editar</a>
-        <a href="#" class="btn btn-danger eliminar" onclick="eliminarRegistro('${key}')">Eliminar</a>
-      </td>
+          <a href="#" class="btn btn-warning editar" onclick="editarRegistro('${key}')">Editar</a>
+          <a href="#" class="btn btn-danger eliminar" onclick="eliminarRegistro('${key}')">Eliminar</a>
+        </td>
     `;
   });
 });
