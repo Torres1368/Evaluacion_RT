@@ -195,10 +195,73 @@
 //-------------------------------------FIN-------------------------------------------------
 
 
+//---------------------------------------------------------MODIFICAR DATOS---------------------------------------
+
+
+window.guardarRegistro = function(key = null) {
+        const nombre = document.getElementById("nombre").value;
+        const apellido = document.getElementById("apellido").value;
+        const email = document.getElementById("email").value;
+        const direccion = document.getElementById("direccion").value;
+        const celular = document.getElementById("celular").value;
+        console.log(nombre, apellido, email, direccion, celular);
+
+        if (key) {
+          // Si hay una clave, es una edición
+          const registroRef = ref(database, `Roberth_Torres/${key}`);
+          set(registroRef, {
+            nombre: nombre,
+            apellido: apellido,
+            email: email,
+            direccion: direccion,
+            celular: celular
+          });
+        } else {
+          // Si no hay clave, es una creación
+          push(ref(database, 'Roberth_Torres'), {
+            nombre: nombre,
+            apellido: apellido,
+            email: email,
+            direccion: direccion,
+            celular: celular
+          });
+        }
+
+        // Limpiar el formulario después de crear o editar
+        limpiarFormulario();
+      };
+
+      // Función para limpiar el formulario
+      function limpiarFormulario() {
+        document.getElementById("nombre").value = "";
+        document.getElementById("apellido").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("direccion").value = "";
+        document.getElementById("celular").value = "";
+      }
+
+      // Función para editar registro
+      window.editarRegistro = function(key) {
+        const registroRef = ref(database, `Roberth_Torres/${key}`);
+        
+        // Obtener los datos del registro seleccionado
+        get(registroRef).then((snapshot) => {
+          const registro = snapshot.val();
+          
+          // Llenar el formulario con los datos del registro
+          document.getElementById("nombre").value = registro.nombre;
+          document.getElementById("apellido").value = registro.apellido;
+          document.getElementById("email").value = registro.email;
+          document.getElementById("direccion").value = registro.direccion;
+          document.getElementById("celular").value = registro.celular;
+        });
+      };
 
 
 
 
+
+//---------------------------------------------------------FIN--------------------------------------------------------
 </script>
 
 
