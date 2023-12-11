@@ -82,8 +82,9 @@
       <td></td>
       <td></td>
       <td>
-        <a href="#" id="editar" class="btn btn-warning">Editar</a>
-        <a href="#" id="eliminar" class="btn btn-danger" >Eliminar</a>
+        <a href="#" class="btn btn-warning editar" data-key="${key}">Editar</a>
+        <a href="#" class="btn btn-danger eliminar" data-key="${key}">Eliminar</a>
+        
       </td>
     </tr>
   </tbody>
@@ -177,8 +178,8 @@ onValue(databaseRef, (snapshot) => {
       <td>${apellido}</td>
       <td>${email}</td>
       <td>
-        <a href="#" class="btn btn-warning editar" data-key="${key}">Editar</a>
-          <a href="#" class="btn btn-danger eliminar" data-key="${key}">Eliminar</a>
+        <a href="#" class="btn btn-warning editar" onclick="editarRegistro('${key}')">Editar</a>
+        <a href="#" class="btn btn-danger eliminar" onclick="eliminarRegistro('${key}')">Eliminar</a>
       </td>
     `;
   });
@@ -189,13 +190,13 @@ onValue(databaseRef, (snapshot) => {
 
   //-----------------------------------ELIMINAR REGISTRO------------------------------------
   function eliminarRegistro(key) {
-    const confirmacion = confirm("¿Estás seguro de que quieres eliminar este registro?");
+  const confirmacion = confirm("¿Estás seguro de que quieres eliminar este registro?");
 
-    if (confirmacion) {
-      const registroRef = ref(database, `Roberth_Torres/${key}`);
-      remove(registroRef);
-    }
+  if (confirmacion) {
+    const registroRef = ref(database, `Roberth_Torres/${key}`);
+    remove(registroRef);
   }
+}
   //-----------------------------------FIN----------------------------------------------------------
 
 
