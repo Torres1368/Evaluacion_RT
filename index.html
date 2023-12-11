@@ -195,13 +195,11 @@
 
 //-------------------------------------FIN-------------------------------------------------
 
-
-//---------------------------------------------------------MODIFICAR DATOS---------------------------------------
 window.editarRegistro = function(key) {
     const registroRef = ref(database, `Roberth_Torres/${key}`);
   
     // Obtener los datos del registro seleccionado
-    get(registroRef).then((snapshot) => {
+    onValue(registroRef, (snapshot) => {
       const registro = snapshot.val();
       
       // Llenar el formulario con los datos del registro
@@ -221,10 +219,6 @@ window.editarRegistro = function(key) {
     });
   };
 
-  // Limpiar el formulario después de crear o editar
-  limpiarFormulario();
-};
-
 // Función para limpiar el formulario
 function limpiarFormulario() {
   document.getElementById("nombre").value = "";
@@ -233,10 +227,6 @@ function limpiarFormulario() {
   document.getElementById("direccion").value = "";
   document.getElementById("celular").value = "";
 }
-
-
-
-//---------------------------------------------------------FIN--------------------------------------------------------
 </script>
 
 
