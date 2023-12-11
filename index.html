@@ -194,7 +194,7 @@
 
 
 //-------------------------------------FIN-------------------------------------------------
-
+//-------------------------------------EDITAR REGISTRO-----------------------------------------------------------
 window.editarRegistro = function(key) {
     const registroRef = ref(database, `Roberth_Torres/${key}`);
   
@@ -208,26 +208,16 @@ window.editarRegistro = function(key) {
       document.getElementById("email").value = registro.email;
       document.getElementById("direccion").value = registro.direccion;
       document.getElementById("celular").value = registro.celular;
-      
-      // Agregar la clave del registro al botón de guardar para indicar que es una edición
-      const guardarButton = document.getElementById("guardarButton");
-      guardarButton.setAttribute("onclick", `guardarRegistro('${key}')`);
 
-      // Ocultar el botón de Enviar y mostrar el botón de Editar
-      document.getElementById("guardarButton").style.display = "none";
-      document.getElementById("editarButton").style.display = "block";
+      // Cambiar el texto del botón a "Actualizar"
+      document.getElementById("editarButton").innerText = "Actualizar";
+
+      // Agregar la clave del registro al botón de editar para indicar que es una edición
+      document.getElementById("editarButton").setAttribute("onclick", `guardarRegistro('${key}')`);
     });
-    // Función para limpiar el formulario
-function limpiarFormulario() {
-  document.getElementById("nombre").value = "";
-  document.getElementById("apellido").value = "";
-  document.getElementById("email").value = "";
-  document.getElementById("direccion").value = "";
-  document.getElementById("celular").value = "";
-}
   };
 
-
+//------------------------------------------------FIN--------------------------------------------
 </script>
 
 
