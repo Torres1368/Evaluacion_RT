@@ -151,15 +151,15 @@
 //-----------------------------------FIN----------------------------------------------------
 
   //-----------------------------------ELIMINAR REGISTRO------------------------------------
-  function eliminarRegistro(key) {
-    console.log("Eliminar registro con clave:", key);
-  const confirmacion = confirm("¿Estás seguro de que quieres eliminar este registro?");
+  window.eliminarRegistro = function(key) {
+        console.log("Eliminar registro con clave:", key);
+        const confirmacion = confirm("¿Estás seguro de que quieres eliminar este registro?");
 
-  if (confirmacion) {
-    const registroRef = ref(database, `Roberth_Torres/${key}`);
-    remove(registroRef);
-  }
-}
+        if (confirmacion) {
+          const registroRef = ref(database, `Roberth_Torres/${key}`);
+          remove(registroRef);
+        }
+      };
   //-----------------------------------FIN----------------------------------------------------------
 
 
